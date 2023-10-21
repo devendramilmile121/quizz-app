@@ -1,0 +1,28 @@
+<div class="container h-full w-full d-flex flex-row justify-content-center">
+  <div
+    class="h-full w-full d-flex flex-row justify-content-center align-items-center"
+    *ngIf="!qs.checkQuizzOver()"
+  >
+    <app-question class="w-full"></app-question>
+  </div>
+  <div
+    class="h-full w-full d-flex flex-column justify-content-center align-items-center card-body m-2"
+    *ngIf="qs.checkQuizzOver()"
+  >
+    <div
+      *ngIf="qs.getScore() > 3"
+      class="material-symbols-outlined mat-icon-xl"
+    >
+      celebration
+    </div>
+    <div
+      *ngIf="qs.getScore() < 3"
+      class="material-symbols-outlined mat-icon-xl"
+    >
+      sentiment_dissatisfied
+    </div>
+    <h1>Your Score: {{ qs.getScore() }} / {{ qs.questions.length }}</h1>
+    <h5 *ngIf="qs.getScore() > 3" class="success">Congratulations!</h5>
+    <h5 *ngIf="qs.getScore() < 3" class="fail">Better Luck Next Time!</h5>
+  </div>
+</div>
